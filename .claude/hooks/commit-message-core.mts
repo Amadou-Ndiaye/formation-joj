@@ -104,7 +104,7 @@ function explain(subject: string, problem: string): string {
     'Ce dépôt suit Conventional Commits (https://www.conventionalcommits.org/fr/) : ' +
       '`type(portée optionnelle): description`, en minuscules, une ligne de 100 caractères au plus.',
     `Types acceptés : ${COMMIT_TYPES.join(', ')}.`,
-    'Exemples : `feat(api): add disciplines endpoint`, `fix(web): show conflict error`, `test: cover AS4`.',
+    'Exemples : `feat(api): add bookings endpoint`, `fix(web): show conflict error`, `test: cover AS4`.',
     'Réécris le message et relance la commande.',
   ].join('\n');
 }

@@ -10,7 +10,7 @@ const bash = (command: string) => ({
 
 describe('commit-message hook (PreToolUse on Bash)', () => {
   it('allows a Conventional Commits message', () => {
-    expect(checkCommitCommand(bash('git commit -m "feat(api): add disciplines"'))).toEqual({
+    expect(checkCommitCommand(bash('git commit -m "feat(api): add bookings"'))).toEqual({
       allow: true,
     });
     expect(checkCommitCommand(bash("git add -A && git commit -m 'fix!: drop old route'"))).toEqual({
@@ -19,10 +19,10 @@ describe('commit-message hook (PreToolUse on Bash)', () => {
   });
 
   it('denies a free-form message and explains the expected format', () => {
-    const decision = checkCommitCommand(bash('git commit -m "ajout des disciplines"'));
+    const decision = checkCommitCommand(bash('git commit -m "ajout des réservations"'));
     expect(decision.allow).toBe(false);
     expect(!decision.allow && decision.reason).toMatch(/Conventional Commits/);
-    expect(!decision.allow && decision.reason).toMatch(/feat\(api\): add disciplines endpoint/);
+    expect(!decision.allow && decision.reason).toMatch(/feat\(api\): add bookings endpoint/);
   });
 
   it('denies an unknown type, a missing description or an overlong subject', () => {

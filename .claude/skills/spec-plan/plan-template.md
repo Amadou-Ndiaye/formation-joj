@@ -14,7 +14,7 @@ Les mots de la spec et leur nom dans le code :
 
 ## 2. Fichiers par couche
 
-Une phrase pour dire quel module on crée et lequel sert de modèle (par exemple : « On crée le module `<nom>`, organisé comme le module Disciplines : un dossier par couche. »). Puis, couche par couche, chaque fichier créé ou modifié suivi de son rôle en une phrase.
+Une phrase pour dire quel module on crée et lequel sert de modèle (par exemple : « On crée le module `<nom>`, organisé comme le module de référence : un dossier par couche. »). Puis, couche par couche, chaque fichier créé ou modifié suivi de son rôle en une phrase.
 
 - **shared** : `packages/shared/src/<nom>.ts` contient les schémas Zod des données échangées entre l'API et le front.
 - **domain** : …

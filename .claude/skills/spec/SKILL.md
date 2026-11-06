@@ -20,14 +20,14 @@ Lis `specs/constitution.md`, et le `CLAUDE.md` du dépôt s'il existe. Applique-
 
 ## 3. Créer le dossier
 
-- Nom court en kebab-case, sans accent : `benevoles`, `tableau-medailles`.
+- Nom court en kebab-case, sans accent : `reservations`, `tableau-medailles`.
 - Numéro : le plus grand `specs/NNN-*` existant + 1, sur trois chiffres (`001` s'il n'y en a pas).
 - Copie `.claude/skills/spec/spec-template.md` dans `specs/NNN-nom/spec.md`, et remplis la ligne `**PRD**` : `specs/prd-nom.md, TRn`.
 
 ## 4. Rédiger
 
 - **Aucune technique** : ni route, ni table, ni composant. On décrit ce que l'utilisateur voit et ce que le système refuse.
-- **Un refus dit sa réponse** : le statut et le code d'erreur donnés par la demande (`refus 409, code SLOT_FULL`), recopiés tels quels dans le « Alors ». C'est ce que l'appelant de l'API observe, et le plan les reprend. Si la demande ne les donne pas, décris le refus avec des mots (« refusé, avec un message de conflit ») et laisse le plan les choisir.
+- **Un refus dit sa réponse** : le statut et le code d'erreur donnés par la demande (`refus 409, code TRIP_FULL`), recopiés tels quels dans le « Alors ». C'est ce que l'appelant de l'API observe, et le plan les reprend. Si la demande ne les donne pas, décris le refus avec des mots (« refusé, avec un message de conflit ») et laisse le plan les choisir.
 - Le contexte reprend le problème du PRD pour cette tranche, sans le recopier.
 - 1 à 3 user stories, pour les utilisateurs du PRD.
 - Des scénarios `### AS1 — titre`, `### AS2 — …`, chacun au format Étant donné / Quand / Alors. Le « Alors » est observable et vérifiable par un test : une valeur, un refus, un message.

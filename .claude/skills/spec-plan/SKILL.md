@@ -12,13 +12,13 @@ Spec visée : $ARGUMENTS (par défaut, le plus grand `specs/NNN-*`).
 
 - `specs/constitution.md`, et le `CLAUDE.md` du dépôt s'il existe.
 - `spec.md` de la spec. **Si son statut n'est pas `Validée`, arrête-toi** : dis quel statut tu as lu, et que la spec doit d'abord être relue et validée (`/spec`). N'écris rien.
-- Le module modèle : `apps/api/src/modules/disciplines/` (domain, application, infra, http), `packages/shared/src/disciplines.ts`, `apps/api/test/disciplines.e2e.spec.ts`, `apps/web/src/mocks/` et `apps/web/src/features/disciplines/`. Reprends ses noms et sa structure.
+- Le module modèle : le premier module métier du projet s'il en existe un (`apps/api/src/modules/`), sinon le module de référence de la branche `main`, lu comme le dit `CLAUDE.md` (`git ls-tree`, `git show main:<chemin>`) : domain, application, infra, http, son schéma partagé, son test e2e, sa fausse API et son écran. Reprends ses noms et sa structure, sans copier ses fichiers dans le projet.
 
 ## 2. Rédiger `plan.md`
 
 Copie `.claude/skills/spec-plan/plan-template.md` dans le dossier de la spec et remplis ses six sections numérotées, dans l'ordre.
 
-**Écris pour un junior qui découvre le dépôt.** Des phrases complètes, qui disent ce qu'elles décrivent : « On crée le module `volunteers`, organisé comme le module Disciplines. » plutôt que « Sur le modèle de `disciplines/`. ». Pas de raccourcis du type « créneau = `Slot` » ni de parenthèses elliptiques : les correspondances entre les mots de la spec et les noms du code vont dans le tableau du résumé. Chaque section commence par une phrase qui dit ce qu'elle contient ; chaque fichier listé est suivi de son rôle.
+**Écris pour un junior qui découvre le dépôt.** Des phrases complètes, qui disent ce qu'elles décrivent : « On crée le module `bookings`, organisé comme le module de référence. » plutôt que « Sur le modèle de `bookings/`. ». Pas de raccourcis du type « trajet = `Trip` » ni de parenthèses elliptiques : les correspondances entre les mots de la spec et les noms du code vont dans le tableau du résumé. Chaque section commence par une phrase qui dit ce qu'elle contient ; chaque fichier listé est suivi de son rôle.
 
 1. **Résumé** : trois à cinq phrases (ce qu'on construit, ce que l'utilisateur pourra faire à la fin, le découpage en tâches, ce qui est laissé de côté), puis le tableau des mots de la spec et de leur nom dans le code.
 2. **Fichiers par couche** : shared → domain → application → infra → http → web. Seulement ce qu'il faut pour les scénarios. Pour chaque route : méthode, chemin, effet et réponse.

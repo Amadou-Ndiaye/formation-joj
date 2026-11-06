@@ -23,7 +23,7 @@ Tâche demandée : $ARGUMENTS (vide = toutes les tâches non cochées, dans l'or
    - « ne se charge pas » ou « pas pour la bonne raison » : écris le squelette demandé (modules et exports typés, corps `throw new Error('non implémenté')`), puis relance.
    - « passe déjà » : le test ne prouve rien ; renforce-le.
    - N'écris pas le code de production tant que `tdd:red` n'a pas répondu « rouge pour la bonne raison ».
-4. **Vert** : le code minimal qui fait passer ce test, en suivant le plan et le module `disciplines`. Puis `pnpm verify` (format, lint, types, tests liés). `pnpm format` règle le format.
+4. **Vert** : le code minimal qui fait passer ce test, en suivant le plan et le module de référence (voir `CLAUDE.md`). Puis `pnpm verify` (format, lint, types, tests liés). `pnpm format` règle le format.
 5. **Refactoriser** si c'est utile, puis `pnpm verify` à nouveau.
 6. **Contrôler le périmètre** : `git status --short`. Chaque fichier modifié doit appartenir à la tâche (plan, « Fichiers par couche »). Sinon, annule ce qui déborde.
 7. **Commiter** : coche la tâche dans `plan.md` (`- [x]`), puis

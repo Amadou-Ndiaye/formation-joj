@@ -16,7 +16,7 @@ Lis `specs/constitution.md`, et le `CLAUDE.md` du dépôt s'il existe. Applique-
 
 Si la demande est vide, demande à l'utilisateur, en une phrase, quel problème il veut résoudre et pour qui. N'écris rien d'autre.
 
-**Le PRD de ce produit existe déjà** (`specs/prd-*.md`) : la demande l'amende. N'en crée pas un second, passe directement à la section 6. Un PRD d'un autre produit (celui de l'atelier B, par exemple) n'est pas concerné : écris le nouveau. Si tu ne sais pas lequel la demande vise, demande-le, en une question.
+**Le PRD de ce produit existe déjà** (`specs/prd-*.md`) : la demande l'amende. N'en crée pas un second, passe directement à la section 6. Un PRD d'un autre produit n'est pas concerné : écris le nouveau. Si tu ne sais pas lequel la demande vise, demande-le, en une question.
 
 ## 2. Challenger avant d'écrire
 
@@ -34,7 +34,7 @@ Si la demande couvre déjà chaque section, ne pose pas de question : écris, et
 
 ## 3. Rédiger
 
-- Nom court en kebab-case, sans accent : `benevoles`, `guide-dakar`. Copie le modèle dans `specs/prd-nom.md`.
+- Nom court en kebab-case, sans accent : `covoiturage`, `guide-dakar`. Copie le modèle dans `specs/prd-nom.md`.
 - **Aucune technique** : ni route, ni table, ni code HTTP, ni nom de bibliothèque. On écrit pour un utilisateur, pas pour un développeur.
 - **Les tranches** couvrent toute la vision : `### TR1 — titre`, `### TR2 — …`. Elles seront réalisées une à une, une spec par tranche, dans l'ordre. La première est la plus petite qui ait de la valeur seule, et tient dans le temps de l'atelier (2 heures de code à l'atelier C) ; les suivantes disent où va le produit.
 - Ce que l'utilisateur n'a pas dit et que tu as dû supposer va dans « Hypothèses et risques », marqué comme tel.
