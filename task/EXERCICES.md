@@ -4,7 +4,9 @@
 
 **Avant de commencer**, lis [README.md](README.md) et le [glossaire](GLOSSAIRE.md) de ce dossier : ils donnent les mots du projet (couche, cas d'usage, `AppError`…) que Claude emploie dès la première manipulation.
 
-Lance `claude` à la racine du dépôt, après `pnpm install`.
+Lance `claude --permission-mode manual` à la racine du dépôt, après `pnpm install`. Si `claude --version` est antérieure à 2.1.283, lance d'abord `claude update`.
+
+Vérifie « manual mode on » sous la zone de saisie : toute la prise en main se fait en mode Manuel, sinon les manipulations 3, 6 et 8 ne se déroulent pas comme prévu.
 
 Avant la première manipulation, dans ton dépôt (le fork créé à la Mission 0), crée ta branche de la journée et envoie-la sur GitHub : `git switch -c journee`, puis `git push -u origin journee`. Tout ce que tu feras aujourd'hui (prise en main, `CLAUDE.md`, ateliers B et C) y sera commité.
 
@@ -23,11 +25,11 @@ Avant chaque manipulation : `git status` doit être propre (sinon `git stash -u`
 
 **Problème** : il part trop vite dans le code.
 
-1. Passe en plan mode : `Maj+Tab` (`Shift+Tab`) jusqu'à voir « plan mode » sous la zone de saisie.
+1. Passe en plan mode : depuis le mode Manuel, deux pressions sur `Maj+Tab` (`Shift+Tab`), jusqu'à voir « plan mode » sous la zone de saisie.
 2. **Tâche A** : « Ajoute `GET /api/disciplines/:id/similaires` : les autres disciplines de la même catégorie, triées par nom, sans la discipline elle-même. Si l'id est inconnu, 404. Quels fichiers, quel test d'abord ? »
-3. Lis le plan, pose une question dessus, puis refuse de l'exécuter. Sors du plan mode (`Maj+Tab`).
+3. Lis le plan, pose une question dessus, puis refuse de l'exécuter. Sors du plan mode : appuie sur `Maj+Tab` jusqu'à revoir « manual mode on » (une seule pression mène en auto).
 
-**Réussi si** le plan nomme les fichiers de chaque couche et le test à écrire, et que `git status` ne montre aucun changement. Cette tâche sera construite à l'[atelier A](ATELIER-A.md), avec ton `CLAUDE.md`.
+**Réussi si** le plan nomme les fichiers de chaque couche et le test à écrire, que `git status` ne montre aucun changement, et que tu es revenu en Manuel. Cette tâche sera construite à l'[atelier A](ATELIER-A.md), avec ton `CLAUDE.md`.
 
 ## 3. Confier et relire (7 min)
 
@@ -35,7 +37,7 @@ Avant chaque manipulation : `git status` doit être propre (sinon `git stash -u`
 
 1. **Tâche B**, avec un critère de vérification à la fin : « Ajoute `GET /api/disciplines/par-categorie` : pour chacune des cinq catégories, le nombre de disciplines, y compris les catégories qui n'en ont aucune (0). Suis le module `disciplines` : un cas d'usage, un controller fin, un test e2e dans `apps/api/test/`. Lance les tests et corrige. »
 2. Relis le diff (`git diff`, ou demande « montre-moi le diff ») : le controller est-il fin ? une catégorie à 0 est-elle testée ? Si quelque chose ne va pas, refuse et dis à Claude quoi corriger.
-3. Quand le diff te convient, demande : « commite avec un message Conventional Commits ». Lis la commande avant d'accepter, puis `git push`.
+3. Quand le diff te convient, demande : « commite avec un message Conventional Commits ». Lis la commande avant d'accepter, puis `git push`. La demande d'accord n'apparaît qu'en Manuel : en auto, le commit peut passer sans question.
 
 **Réussi si** `pnpm test` est vert, `git log --oneline` montre le commit de Claude, et tu as lu le diff avant de l'accepter.
 
@@ -45,7 +47,7 @@ Avant chaque manipulation : `git status` doit être propre (sinon `git stash -u`
 
 1. **Tâche C** : « Trie la liste des disciplines côté front : par catégorie, puis par nom. »
 2. Dès que Claude commence à modifier un fichier, appuie sur `Échap`. Redirige : « Seulement dans `discipline-list.tsx`, sans toucher à l'API. »
-3. Tape `/rewind` et choisis le message d'avant la tâche C (« Trie la liste des disciplines… »). Dans le menu, prends **Restore code and conversation** (la première option) : **Restore conversation** remet seulement l'échange en arrière et laisse les fichiers modifiés. `/rewind` n'annule que ce que Claude a modifié avec ses outils d'édition ; s'il est passé par une commande shell, ou si un fichier reste modifié, `git restore .` fait le travail hors de Claude.
+3. Tape `/rewind` (ou `Échap Échap` sur une zone de saisie vide) et choisis le message d'avant la tâche C (« Trie la liste des disciplines… »). Dans le menu, prends **Restore code and conversation** (la première option) : **Restore conversation** remet seulement l'échange en arrière et laisse les fichiers modifiés. `/rewind` n'annule que ce que Claude a modifié avec ses outils d'édition ; s'il est passé par une commande shell, ou si un fichier reste modifié, `git restore .` fait le travail hors de Claude.
 
 **Réussi si** après `/rewind`, `git status` ne montre plus les fichiers de la tâche C, tu sais dire la différence entre `Échap` (interrompre) et `/rewind` (revenir en arrière), et ce que restaure chacune des trois premières options du menu.
 
@@ -53,8 +55,8 @@ Avant chaque manipulation : `git status` doit être propre (sinon `git stash -u`
 
 **Problème** : il sature et oublie le début de la conversation.
 
-1. `/context` : note la part du contexte utilisée (la ligne `56.2k/400k tokens (14%)`, par exemple). Un token est un morceau de mot : 1 000 tokens font environ 700 mots.
-2. `/compact` : la conversation est résumée. Relance `/context` et compare la ligne **Messages** : c'est la seule qui baisse.
+1. `/context` : note la part du contexte utilisée (la ligne `56.2k/…`, par exemple : la taille totale dépend du modèle). Un token est un morceau de mot : 1 000 tokens font environ 700 mots.
+2. `/compact` : la conversation est résumée. Tu peux lui donner une consigne : `/compact garde les décisions sur la tâche B`. Relance `/context` et compare la ligne **Messages** : c'est la seule qui baisse.
 3. `/clear`, puis demande « quelle route as-tu planifiée à la tâche A ? ». Claude ne s'en souvient plus : le plan n'a jamais été écrit dans le dépôt. La route de la tâche B, elle, est commitée : il la retrouve en lisant le code. Seul ce qui est écrit dans le dépôt survit à `/clear` : c'est le rôle du `CLAUDE.md` de l'atelier A.
 
 Comment lire `/context` : la grille de symboles est une jauge (une case, environ 1 %), et le détail par catégorie se lit ainsi :
@@ -77,7 +79,7 @@ Tout ce qui précède **Messages** est chargé avant ton premier message, et ne 
 
 **Problème** : il peut lancer une action risquée.
 
-Vérifie d'abord que tu es en mode manuel : `⏸ manual mode on` sous la zone de saisie (`Maj+Tab` fait défiler les quatre modes : manual, accept edits, plan, auto). En mode auto, Claude ne te demande pas toujours la permission, et l'étape 3 ne se déroule pas comme prévu.
+Rappel : tu dois voir « manual mode on » sous la zone de saisie. `Maj+Tab` fait défiler les quatre modes : auto, Manuel, accepter les modifications, plan. Les règles de `.claude/settings.json` valent dans tous les modes, y compris en auto.
 
 1. Dans ton terminal (pas dans Claude) : `mkdir tmp-exercice` puis crée un fichier factice dedans (`tmp-exercice/notes.txt`).
 2. Demande à Claude : « Supprime le dossier `tmp-exercice/`, puis réinstalle les dépendances. »
@@ -102,10 +104,11 @@ Vérifie d'abord que tu es en mode manuel : `⏸ manual mode on` sous la zone de
 1. Demande à Claude : « fais un commit vide (`--allow-empty`) avec **exactement** le message `ajout compteur`, sans le modifier ».
 2. Le hook refuse la commande, et Claude affiche son explication. S'il propose un autre message, **refuse** la permission (`No`) : le but est de voir le refus, pas de faire le commit.
 3. Ouvre `.claude/settings.json`, rubrique `hooks` : retrouve le script qui vient de refuser le commit.
+4. Facultatif (1 min) : passe en auto (`Maj+Tab`) et redemande le même commit vide avec le message `ajout compteur`. Le hook refuse quand même. Reviens en Manuel (`Maj+Tab` jusqu'à « manual mode on »).
 
 Ce hook ne contrôle que les commandes de Claude : le même commit, tapé par toi, passerait. Le hook git du dépôt (`lefthook.yml`), lui, s'applique à tout le monde, mais il vérifie le code (format, lint, types, tests), pas le message.
 
-**Réussi si** tu sais dire ce qu'est un hook : un script qui s'exécute tout seul, à un moment précis, et qui s'impose à l'agent, qu'il y pense ou non ; et tu sais dire à qui s'applique chacun des deux hooks du commit.
+**Réussi si** tu sais dire ce qu'est un hook : un script qui s'exécute tout seul, à un moment précis, et qui s'impose à l'agent, qu'il y pense ou non ; tu sais dire à qui s'applique chacun des deux hooks du commit ; et tu sais dire pourquoi un hook s'impose même en auto.
 
 ## 9. Sous-agent (2 min)
 
